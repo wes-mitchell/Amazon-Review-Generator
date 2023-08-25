@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 
 namespace LoyalHealthAPI
@@ -17,7 +18,7 @@ namespace LoyalHealthAPI
     public class Startup
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly string _fileName = "Musical_Instrument_Review_Data.json";
+        private readonly string _fileName = "Musical_Instruments_Review_Data.json.gz";
         private readonly int _keySize = new Random().Next(3, 6);
         private readonly int _outPutSize = new Random().Next(200, 500);
         private string _dataFilePath;
@@ -73,22 +74,27 @@ namespace LoyalHealthAPI
         private Dictionary<string, List<string>> loadTrainingData(int keySize)
         {
             var reviews = new List<string>();
-            using (var streamReader = new StreamReader(_dataFilePath))
+            using (var fileStream = File.OpenRead(_dataFilePath))
             {
-                var rawJsonString = streamReader.ReadToEnd();
-                var splitJsonString = rawJsonString.Split(('\n'));
-                foreach (string jsonObj in splitJsonString)
+                using (var gzipStream = new GZipStream(fileStream, CompressionMode.Decompress))
                 {
-                    if (!string.IsNullOrWhiteSpace(jsonObj))
+                    using (var streamReader = new StreamReader(gzipStream))
                     {
-                        JObject reviewData = JObject.Parse(jsonObj);
-                        if (reviewData.ContainsKey("reviewText"))
+                        var rawJsonString = streamReader.ReadToEnd();
+                        var splitJsonString = rawJsonString.Split(('\n'));
+                        foreach (string jsonObj in splitJsonString)
                         {
-                            reviews.Add(reviewData["reviewText"].ToString());
+                            if (!string.IsNullOrWhiteSpace(jsonObj))
+                            {
+                                JObject reviewData = JObject.Parse(jsonObj);
+                                if (reviewData.ContainsKey("reviewText"))
+                                {
+                                    reviews.Add(reviewData["reviewText"].ToString());
+                                }
+                            }
                         }
                     }
                 }
-
             }
 
             var allReviewText = string.Join(" ", reviews).Split();
