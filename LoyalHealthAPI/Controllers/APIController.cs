@@ -1,7 +1,6 @@
 ﻿using LoyalHealthAPI.Models;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
+using System;
 
 namespace LoyalHealthAPI.Controllers
 {
@@ -9,21 +8,23 @@ namespace LoyalHealthAPI.Controllers
     [Route("[controller]")]
     public class APIController : ControllerBase
     {
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly string fileName = "Musical_Instruments.json.gz";
-        private readonly string dataFilePath;
+        private readonly MarkovChainTextGenerator markovChainTextGenerator;
+        private readonly TrainingData _trainingData;
 
-        public APIController(IWebHostEnvironment webHostEnvironment) { 
-            _webHostEnvironment = webHostEnvironment;
-            dataFilePath = $"{_webHostEnvironment.ContentRootPath}/Files/{fileName}";
+        public APIController(TrainingData trainingData)
+        {
+            _trainingData = trainingData;
+            markovChainTextGenerator = new MarkovChainTextGenerator(_trainingData);
         }
 
         [HttpGet("generate")]
-        public string GenerateReview()
+        public IActionResult GenerateReview()
         {
-            var generator = new MarkovChainTextGenerator();
-            return generator.Markov(dataFilePath, 3, 200);
+            var reviewText = markovChainTextGenerator.GenerateMarkovString();
+            var starRating = new Random().Next(1, 6);
+            return Ok(new Review(starRating, reviewText));
         }
 
     }
 }
+
