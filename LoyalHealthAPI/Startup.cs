@@ -18,7 +18,7 @@ namespace LoyalHealthAPI
     public class Startup
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly string _fileName = "Musical_Instruments_Review_Data.json.gz";
+        private readonly string _fileName;
         private readonly int _keySize = new Random().Next(3, 6);
         private readonly int _outPutSize = new Random().Next(200, 500);
         private string _dataFilePath;
@@ -27,6 +27,7 @@ namespace LoyalHealthAPI
         {
             Configuration = configuration;
             _webHostEnvironment = webHostEnvironment;
+            _fileName = configuration["ReviewDataFileName"];
         }
 
         public IConfiguration Configuration { get; }
@@ -52,7 +53,7 @@ namespace LoyalHealthAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsEnvironment("Local"))
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
