@@ -80,13 +80,12 @@ namespace LoyalHealthAPI
                 {
                     using (var streamReader = new StreamReader(gzipStream))
                     {
-                        var rawJsonString = streamReader.ReadToEnd();
-                        var splitJsonString = rawJsonString.Split(('\n'));
-                        foreach (string jsonObj in splitJsonString)
+                        string line;
+                        while ((line = streamReader.ReadLine()) != null)
                         {
-                            if (!string.IsNullOrWhiteSpace(jsonObj))
+                            if (!string.IsNullOrWhiteSpace(line))
                             {
-                                JObject reviewData = JObject.Parse(jsonObj);
+                                JObject reviewData = JObject.Parse(line);
                                 if (reviewData.ContainsKey("reviewText"))
                                 {
                                     reviews.Add(reviewData["reviewText"].ToString());
