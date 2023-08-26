@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoyalHealthAPI", "LoyalHealthAPI\LoyalHealthAPI.csproj", "{E8759958-36B9-4B7B-ABD5-78BC2A7E73D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoyalHealthAPI.Tests", "LoyalHealthAPI.Tests\LoyalHealthAPI.Tests.csproj", "{23E2F84E-F56B-4C44-9E56-F2542194B73D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoyalHealthAPI.Tests", "LoyalHealthAPI.Tests\LoyalHealthAPI.Tests.csproj", "{23E2F84E-F56B-4C44-9E56-F2542194B73D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,7 +20,6 @@ Global
 		{23E2F84E-F56B-4C44-9E56-F2542194B73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23E2F84E-F56B-4C44-9E56-F2542194B73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23E2F84E-F56B-4C44-9E56-F2542194B73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23E2F84E-F56B-4C44-9E56-F2542194B73D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
