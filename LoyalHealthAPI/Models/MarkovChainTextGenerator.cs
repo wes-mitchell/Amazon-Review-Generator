@@ -1,10 +1,11 @@
-﻿using System;
+﻿using LoyalHealthAPI.Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LoyalHealthAPI.Models
 {
-    public class MarkovChainTextGenerator
+    public class MarkovChainTextGenerator : IMarkovChainTextGenerator
     {
         private readonly Dictionary<string, List<string>> _reviewData;
         private readonly int _keySize;

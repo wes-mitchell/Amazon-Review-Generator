@@ -1,8 +1,5 @@
 ﻿using LoyalHealthAPI.Interfaces;
-using LoyalHealthAPI.Models;
-using LoyalHealthAPI.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace LoyalHealthAPI.Controllers
 {

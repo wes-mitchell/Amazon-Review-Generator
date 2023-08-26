@@ -1,5 +1,6 @@
 using LoyalHealthAPI.Interfaces;
 using LoyalHealthAPI.Models;
+using LoyalHealthAPI.Models.Interfaces;
 using LoyalHealthAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +39,7 @@ namespace LoyalHealthAPI
         public void ConfigureServices(IServiceCollection services)
         {
             _dataFilePath = $"{_webHostEnvironment.ContentRootPath}/Files/{_fileName}";
-            services.AddSingleton(new TrainingData { ReviewData = loadTrainingData(_keySize), KeySize = _keySize, OutputSize = _outPutSize });
+            services.AddSingleton((IMarkovChainTextGenerator)new MarkovChainTextGenerator(new TrainingData { ReviewData = loadTrainingData(_keySize), KeySize = _keySize, OutputSize = _outPutSize }));
             services.AddControllers();
             services.AddTransient<IReviewService, ReviewService>();
             services.AddSwaggerGen(c =>

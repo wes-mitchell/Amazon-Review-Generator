@@ -1,22 +1,21 @@
 ﻿using LoyalHealthAPI.Interfaces;
 using LoyalHealthAPI.Models;
+using LoyalHealthAPI.Models.Interfaces;
 using System;
 
 namespace LoyalHealthAPI.Services
 {
     public class ReviewService : IReviewService
     {
-        private readonly MarkovChainTextGenerator markovChainTextGenerator;
-        private readonly TrainingData _trainingData;
+        private readonly IMarkovChainTextGenerator _markovChainTextGenerator;
 
-        public ReviewService(TrainingData trainingData) {
-            _trainingData = trainingData;
-            markovChainTextGenerator = new MarkovChainTextGenerator(_trainingData);
+        public ReviewService(IMarkovChainTextGenerator markovChainTextGenerator) {
+            _markovChainTextGenerator = markovChainTextGenerator;
         }
 
         public Review GenerateReview()
         {
-            var reviewText = markovChainTextGenerator.GenerateMarkovString();
+            var reviewText = _markovChainTextGenerator.GenerateMarkovString();
             if (String.IsNullOrWhiteSpace(reviewText)) {
                 throw new Exception("An error occured while generating your review.");
             }
