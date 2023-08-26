@@ -1,4 +1,6 @@
+using LoyalHealthAPI.Interfaces;
 using LoyalHealthAPI.Models;
+using LoyalHealthAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -38,6 +40,7 @@ namespace LoyalHealthAPI
             _dataFilePath = $"{_webHostEnvironment.ContentRootPath}/Files/{_fileName}";
             services.AddSingleton(new TrainingData { ReviewData = loadTrainingData(_keySize), KeySize = _keySize, OutputSize = _outPutSize });
             services.AddControllers();
+            services.AddTransient<IReviewService, ReviewService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LoyalHealthAPI", Version = "v1" });
