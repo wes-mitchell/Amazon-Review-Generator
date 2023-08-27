@@ -29,7 +29,7 @@ jobs:
         run: mkdir published
 
       - name: Publish to folder
-        run: dotnet publish LoyalHealthAPI\LoyalHealthAPI\LoyalHealthAPI.csproj --configuration Release --output ./published
+        run: dotnet publish LoyalHealthAPI/LoyalHealthAPI.csproj --configuration Release --output ./published
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
