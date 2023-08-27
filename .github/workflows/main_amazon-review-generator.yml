@@ -25,15 +25,17 @@ jobs:
       - name: Restore NuGet packages
         run: nuget restore
 
-      - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build;Publish /p:Configuration=Release /p:ExcludeProjects="LoyalHealthAPI.Tests" /p:PublishDir="$(GITHUB_WORKSPACE)/published"
+      - name: Create published directory
+        run: mkdir published
 
+      - name: Publish to folder
+        run: msbuild /nologo /verbosity:m /t:Build;Publish /p:Configuration=Release /p:ExcludeProjects="LoyalHealthAPI.Tests" /p:PublishDir="./published"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: ASP-app
-          path: ${{ github.workspace }}/published
+          path: ./temp_publish
 
   deploy:
     runs-on: windows-latest
