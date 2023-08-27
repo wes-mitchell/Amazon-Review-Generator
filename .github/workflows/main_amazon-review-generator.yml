@@ -29,13 +29,13 @@ jobs:
         run: mkdir published
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build;Publish /p:Configuration=Release /p:ExcludeProjects="LoyalHealthAPI.Tests" /p:PublishDir="./published"
+        run: dotnet publish LoyalHealthAPI/LoyalHealthAPI/LoyalHealthAPI.csproj --configuration Release --output ./published
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: ASP-app
-          path: ./temp_publish
+          path: ./published
 
   deploy:
     runs-on: windows-latest
