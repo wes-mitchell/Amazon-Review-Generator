@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<Target Name="pipelinePreDeployCopyAllFilesToOneFolder" AfterTargets="Build">
-		<Copy SourceFiles="LoyalHealthAPI\**\*.*" DestinationFolder="$(MSBuildProjectDirectory)\published" />
+		<Copy SourceFiles="LoyalHealthAPI\bin\Debug\net5.0\" DestinationFolder="$(MSBuildProjectDirectory)\published" />
 	</Target>
 
 	<ItemGroup>
