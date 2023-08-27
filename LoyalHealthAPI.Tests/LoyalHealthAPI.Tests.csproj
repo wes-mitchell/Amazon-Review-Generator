@@ -5,7 +5,9 @@
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
-	<Target Name="pipelinePreDeployCopyAllFilesToOneFolder"></Target>
+	<Target Name="pipelinePreDeployCopyAllFilesToOneFolder" AfterTargets="Build">
+		<Copy SourceFiles="LoyalHealthAPI\**\*.*" DestinationFolder="$(MSBuildProjectDirectory)\published" />
+	</Target>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />

@@ -25,14 +25,17 @@ jobs:
       - name: Restore NuGet packages
         run: nuget restore
 
+      - name: Create /published/ directory
+        run: mkdir -p /published/
+
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:ExcludeProjects="LoyalHealthAPI.Tests"
+        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\\published\\" /p:ExcludeProjects="LoyalHealthAPI.Tests"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: ASP-app
-          path: 'LoyalHealthAPI\LoyalHealthAPI\bin\Debug\net5.0\'
+          path: '/published/**'
 
   deploy:
     runs-on: windows-latest

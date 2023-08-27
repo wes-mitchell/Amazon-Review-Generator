@@ -6,7 +6,9 @@
 		<Configurations>Debug;Release</Configurations>
 	</PropertyGroup>
 
-	<Target Name="pipelinePreDeployCopyAllFilesToOneFolder"></Target>
+	<Target Name="pipelinePreDeployCopyAllFilesToOneFolder" AfterTargets="Build">
+		<Copy SourceFiles="LoyalHealthAPI\**\*.*" DestinationFolder="$(MSBuildProjectDirectory)\published" />
+	</Target>
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
