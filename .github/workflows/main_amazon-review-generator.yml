@@ -26,14 +26,14 @@ jobs:
         run: nuget restore
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build;Publish /p:Configuration=Release /p:ExcludeProjects="LoyalHealthAPI.Tests" /p:PublishDir="$(Build.ArtifactStagingDirectory)"
+        run: msbuild /nologo /verbosity:m /t:Build;Publish /p:Configuration=Release /p:ExcludeProjects="LoyalHealthAPI.Tests" /p:PublishDir="$(GITHUB_WORKSPACE)/published"
 
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: ASP-app
-          path: '$(Build.ArtifactStagingDirectory)'
+          path: ${{ github.workspace }}/published
 
   deploy:
     runs-on: windows-latest
