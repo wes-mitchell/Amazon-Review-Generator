@@ -5,10 +5,6 @@
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
-	<Target Name="pipelinePreDeployCopyAllFilesToOneFolder" AfterTargets="Build">
-		<Copy SourceFiles="LoyalHealthAPI\bin\Debug\net5.0\" DestinationFolder="$(MSBuildProjectDirectory)\published" />
-	</Target>
-
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
 		<PackageReference Include="Moq" Version="4.20.69" />

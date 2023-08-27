@@ -6,10 +6,6 @@
 		<Configurations>Debug;Release</Configurations>
 	</PropertyGroup>
 
-	<Target Name="pipelinePreDeployCopyAllFilesToOneFolder" AfterTargets="Build">
-		<Copy SourceFiles="LoyalHealthAPI\bin\Debug\net5.0\" DestinationFolder="$(MSBuildProjectDirectory)\published" />
-	</Target>
-
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
