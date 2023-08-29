@@ -7,6 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Content Include="Files\**\*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>Files\%(RecursiveDir)%(Filename)%(Extension)</TargetPath>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
 	</ItemGroup>
