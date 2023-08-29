@@ -31,12 +31,6 @@ jobs:
       - name: Publish to folder
         run: dotnet publish LoyalHealthAPI/LoyalHealthAPI.csproj --configuration Release --output ./published
 
-      - name: Create Files directory 
-        run: mkdir ./published/Files
-
-      - name: Copy Local Files to Files directory
-        run: cp -r LoyalHealthAPI/Files/* ./published/Files/
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
