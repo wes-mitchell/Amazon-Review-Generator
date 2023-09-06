@@ -25,9 +25,6 @@ jobs:
       - name: Restore NuGet packages
         run: nuget restore
 
-      - name: Remove Additional Files at Destination
-        run: rm -rf ./published
-
       - name: Publish to folder
         run: dotnet publish LoyalHealthAPI/LoyalHealthAPI.csproj --configuration Release --output ./published
 
