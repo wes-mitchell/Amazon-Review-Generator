@@ -1,6 +1,9 @@
 ﻿using AmazonReviewGenerator.API.Models.Interfaces;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 
 namespace AmazonReviewGenerator.API.Models
@@ -18,7 +21,7 @@ namespace AmazonReviewGenerator.API.Models
             _reviewLength = trainingData.OutputSize;
         }
 
-        private string createKeyFromPrefixWithSuffix(string prefix, string suffix)
+        private static string createKeyFromPrefixWithSuffix(string prefix, string suffix)
         {
             return $"{prefix} {suffix}";
         }
@@ -55,6 +58,60 @@ namespace AmazonReviewGenerator.API.Models
                 currentWordIndex++;
                 currentPrefix = output.Skip(currentWordIndex).Take(_keySize).Aggregate(createKeyFromPrefixWithSuffix);
             }
+        }
+
+        public static Dictionary<string, List<string>> LoadTrainingData(int keySize, string filePath)
+        {
+            var reviews = new List<string>();
+            using (var fileStream = File.OpenRead(filePath))
+            {
+                using (var gzipStream = new GZipStream(fileStream, CompressionMode.Decompress))
+                {
+                    using (var streamReader = new StreamReader(gzipStream))
+                    {
+                        string line;
+                        while ((line = streamReader.ReadLine()) != null)
+                        {
+                            if (!string.IsNullOrWhiteSpace(line))
+                            {
+                                JObject reviewData = JObject.Parse(line);
+                                if (reviewData.ContainsKey("reviewText"))
+                                {
+                                    reviews.Add(reviewData["reviewText"].ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            var allReviewText = string.Join(" ", reviews).Split();
+
+            Dictionary<string, List<string>> dataDictionary = new Dictionary<string, List<string>>();
+            for (int i = 0; i < allReviewText.Length - keySize; i++)
+            {
+                var key = allReviewText.Skip(i).Take(keySize).Aggregate(createKeyFromPrefixWithSuffix);
+                string value;
+                if (i + keySize < allReviewText.Length)
+                {
+                    value = allReviewText[i + keySize];
+                }
+                else
+                {
+                    value = "";
+                }
+
+                if (dataDictionary.ContainsKey(key))
+                {
+                    dataDictionary[key].Add(value);
+                }
+                else
+                {
+                    dataDictionary.Add(key, new List<string>() { value });
+                }
+            }
+            return dataDictionary;
+
         }
     }
 }
