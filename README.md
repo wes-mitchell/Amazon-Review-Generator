@@ -7,7 +7,7 @@ Welcome to the Amazon Review Generator API. This API has one endpoint that when 
 
 If you would like to locally run the API and see what kind of reviews the API is returning you may follow these instructions. 
 
-1. Clone the repository onto your local machine using the following command ```git clone git@github.com:wes-mitchell/Loyal-Health-Assessment.git```
+1. Clone the repository onto your local machine using the following command ```git clone git@github.com:wes-mitchell/Amazon-Review-Generator.git```
 2. Once the repository has been cloned you may open the solution from the file explorer or from Visual Studio. 
 3. After you have opened the solution in Visual Studio ensure your startup project is set correctly to **_LoyalHealthAPI_.** If it is not currently set, you may do so by right clicking the project and selecting "Set as Startup Project" from the menu. 
 4. You now may launch / start the project in either the **"Dev"** or **"Local"** environment which can be selected from the launch dropdown menu. Each environment has it's own unique set of training data. If you'd like to reference the files used for training the markov chain generator see the **_ReviewDataFileName_** value in the corresponding _appsettings.Development.json_ and _appsettings.Local.json_ files.
