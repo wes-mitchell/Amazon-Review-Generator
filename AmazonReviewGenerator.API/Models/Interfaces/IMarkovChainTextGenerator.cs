@@ -6,6 +6,5 @@ namespace AmazonReviewGenerator.API.Models.Interfaces
     {
         string GenerateMarkovString();
 
-        Dictionary<string, List<string>> LoadTrainingData(int keySize, string filePath);
     }
 }
