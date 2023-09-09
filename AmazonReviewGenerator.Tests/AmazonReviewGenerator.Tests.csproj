@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\LoyalHealthAPI\AmazonReviewGenerator.API.csproj" />
+		<ProjectReference Include="..\AmazonReviewGenerator.API\AmazonReviewGenerator.API.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazonReviewGenerator.API", "LoyalHealthAPI\AmazonReviewGenerator.API.csproj", "{E8759958-36B9-4B7B-ABD5-78BC2A7E73D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazonReviewGenerator.API", "AmazonReviewGenerator.API\AmazonReviewGenerator.API.csproj", "{E8759958-36B9-4B7B-ABD5-78BC2A7E73D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazonReviewGenerator.Tests", "LoyalHealthAPI.Tests\AmazonReviewGenerator.Tests.csproj", "{23E2F84E-F56B-4C44-9E56-F2542194B73D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazonReviewGenerator.Tests", "AmazonReviewGenerator.Tests\AmazonReviewGenerator.Tests.csproj", "{23E2F84E-F56B-4C44-9E56-F2542194B73D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
