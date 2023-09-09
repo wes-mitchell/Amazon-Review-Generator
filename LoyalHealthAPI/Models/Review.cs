@@ -1,4 +1,4 @@
-﻿namespace LoyalHealthAPI.Models
+﻿namespace AmazonReviewGenerator.API.Models
 {
     public class Review
     {

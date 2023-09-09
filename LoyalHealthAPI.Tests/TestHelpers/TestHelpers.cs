@@ -1,8 +1,8 @@
-﻿using LoyalHealthAPI.Models;
+﻿using AmazonReviewGenerator.API.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LoyalHealthAPI.Tests.TestHelpers
+namespace AmazonReviewGenerator.Tests.TestHelpers
 {
     public static class TestHelpers
     {

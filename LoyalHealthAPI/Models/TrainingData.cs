@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LoyalHealthAPI.Models
+namespace AmazonReviewGenerator.API.Models
 {
     public class TrainingData
     {

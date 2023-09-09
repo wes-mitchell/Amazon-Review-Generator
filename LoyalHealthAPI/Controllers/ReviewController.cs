@@ -1,7 +1,7 @@
-﻿using LoyalHealthAPI.Interfaces;
+﻿using AmazonReviewGenerator.API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LoyalHealthAPI.Controllers
+namespace AmazonReviewGenerator.API.Controllers
 {
     [ApiController]
     [Route("API")]

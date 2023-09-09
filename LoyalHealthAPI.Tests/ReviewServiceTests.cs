@@ -1,11 +1,11 @@
-﻿using LoyalHealthAPI.Interfaces;
-using LoyalHealthAPI.Services;
-using Xunit;
-using LoyalHealthAPI.Models.Interfaces;
+﻿using AmazonReviewGenerator.API.Models.Interfaces;
+using AmazonReviewGenerator.API.Services;
+using AmazonReviewGenerator.API.Services.Interfaces;
 using Moq;
 using System;
+using Xunit;
 
-namespace LoyalHealthAPI.Tests
+namespace AmazonReviewGenerator.Tests
 {
     [Collection("Sequential")]
     public class ReviewServiceTests

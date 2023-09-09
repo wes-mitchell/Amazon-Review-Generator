@@ -1,9 +1,9 @@
-﻿using LoyalHealthAPI.Models.Interfaces;
+﻿using AmazonReviewGenerator.API.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LoyalHealthAPI.Models
+namespace AmazonReviewGenerator.API.Models
 {
     public class MarkovChainTextGenerator : IMarkovChainTextGenerator
     {

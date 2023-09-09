@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Local"
       }
     },
-    "LoyalHealthAPI": {
+    "AmazonReviewGeneratorAPI": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

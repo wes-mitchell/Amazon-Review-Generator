@@ -1,8 +1,8 @@
-using LoyalHealthAPI.Models;
-using TestHelper = LoyalHealthAPI.Tests.TestHelpers.TestHelpers;
+using AmazonReviewGenerator.API.Models;
+using TestHelper = AmazonReviewGenerator.Tests.TestHelpers.TestHelpers;
 using Xunit;
 
-namespace LoyalHealthAPI.Tests
+namespace AmazonReviewGenerator.Tests
 {
     [Collection("Sequential")]
 

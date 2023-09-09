@@ -1,4 +1,4 @@
-﻿namespace LoyalHealthAPI.Models.Interfaces
+﻿namespace AmazonReviewGenerator.API.Models.Interfaces
 {
     public interface IMarkovChainTextGenerator
     {

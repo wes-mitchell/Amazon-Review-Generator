@@ -1,7 +1,7 @@
-using LoyalHealthAPI.Interfaces;
-using LoyalHealthAPI.Models;
-using LoyalHealthAPI.Models.Interfaces;
-using LoyalHealthAPI.Services;
+using AmazonReviewGenerator.API.Models;
+using AmazonReviewGenerator.API.Models.Interfaces;
+using AmazonReviewGenerator.API.Services;
+using AmazonReviewGenerator.API.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -16,7 +16,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 
-namespace LoyalHealthAPI
+namespace AmazonReviewGenerator.API
 {
     public class Startup
     {

@@ -1,9 +1,9 @@
-﻿using LoyalHealthAPI.Interfaces;
-using LoyalHealthAPI.Models;
-using LoyalHealthAPI.Models.Interfaces;
+﻿using AmazonReviewGenerator.API.Models;
+using AmazonReviewGenerator.API.Models.Interfaces;
+using AmazonReviewGenerator.API.Services.Interfaces;
 using System;
 
-namespace LoyalHealthAPI.Services
+namespace AmazonReviewGenerator.API.Services
 {
     public class ReviewService : IReviewService
     {
