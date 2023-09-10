@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace AmazonReviewGenerator.API.Controllers
 {
     [ApiController]
-    [Route("API")]
-    public class ReviewController : ControllerBase
+    [Route("[controller]")]
+    public class ReviewController : Controller
     {
         private readonly IReviewService _reviewService;
 
@@ -14,11 +14,11 @@ namespace AmazonReviewGenerator.API.Controllers
             _reviewService = reviewService;
         }
 
-        [HttpGet("generate")]
+        [HttpGet("Generate")]
         public IActionResult GenerateReview()
         {
             var review = _reviewService.GenerateReview();
-            return Ok(review);
+            return View("Review", review);
         }
 
     }

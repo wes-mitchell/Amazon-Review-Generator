@@ -1,0 +1,36 @@
+﻿<style>
+    #content-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    #content {
+        text-align: center;
+        max-width: 400px;
+        padding: 20px;
+    }
+
+    .no-underline {
+        text-decoration: none;
+    }
+</style>
+
+<div id="content-container">
+    <div id="content">
+        <div class="row">
+            <div class="col-md-6">
+                Welcome to the Amazon Review Generator. If you feel like leaving your humble opinion up to the random
+                Markov Text Generator click the button below.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary btn-lg">
+                    <a href="@Url.Action("Generate","Review")" class="no-underline">Get A Review</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

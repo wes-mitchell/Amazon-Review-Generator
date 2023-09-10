@@ -33,6 +33,7 @@ namespace AmazonReviewGenerator.API
         public void ConfigureServices(IServiceCollection services)
         {
             var _dataFilePath = $"{_webHostEnvironment.ContentRootPath}/Files/{_fileName}";
+            services.AddControllersWithViews();
             services.AddSingleton((IMarkovChainTextGenerator)new MarkovChainTextGenerator(new TrainingData 
             { 
                 ReviewData = MarkovChainTextGenerator.LoadTrainingData(_keySize, _dataFilePath), KeySize = _keySize, OutputSize = _outPutSize 
@@ -66,6 +67,13 @@ namespace AmazonReviewGenerator.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.UseEndpoints(endpoints =>
             {

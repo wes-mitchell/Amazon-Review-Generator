@@ -1,0 +1,27 @@
+﻿@model AmazonReviewGenerator.API.Models.Review
+
+@{
+    ViewData["Title"] = "ReviewView";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Review</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">Star Rating:</dt>
+                <dd class="col-sm-10" id="starRating">@Model.StarRating</dd>
+                <dt class="col-sm-2">Review Text:</dt>
+                <dd class="col-sm-10" id="reviewText">@Model.ReviewText</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="btn btn-primary btn-lg">
+                <a href="@Url.Action("Generate","Review")" style="text-decoration: none">Generate Review</a>
+            </button>
+        </div>
+    </div>
+</div>
